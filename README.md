@@ -10,9 +10,13 @@
 
 💡가지고 있는 움짤들을 공유할 수 있는 사이트, 움짤 저장소 입니다! 🥳
 
-### 📌프로젝트 ERD
-![Screenshot 2024-10-27 181117](https://github.com/user-attachments/assets/bf61ec9d-61f6-4183-9912-2806c603ba1d)
+<br>
 
+## 📌프로젝트 ERD
+ - [app/customauth/models.py](https://github.com/hoya9802/GifArchive/blob/main/app/customauth/models.py) : 개인정보, 구독자, 프로필 테이블
+ - [app/photo/models.py](https://github.com/hoya9802/GifArchive/blob/main/app/photo/models.py) : 카테고리, 움짤, 좋아요 테이블
+
+![Screenshot 2024-10-27 181117](https://github.com/user-attachments/assets/bf61ec9d-61f6-4183-9912-2806c603ba1d)
 <br>
 
 ## 🛠️기술 스택
