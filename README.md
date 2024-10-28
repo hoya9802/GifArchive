@@ -1,5 +1,7 @@
 # 🗂️움짤 저장소 [개인 프로젝트]
 
+<br>
+
 ## 👉프로젝트 소개 <br>
 - 가지고 있는 움짤들은 많지만 이것들을 공유할 수 없을 때
 - 다른 사람들이 가지고 있는 움짤들이 궁금할 때
@@ -34,6 +36,8 @@
   <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=Visual Studio Code&logoColor=white">
 </div>
 
+<br>
+
 ## 📍주요 기능
 1. 회원가입 & 로그인
 2. SMTP 통신을 통한 패스워드 찾기
@@ -44,6 +48,8 @@
 7. 카테고리
 8. 프로필 정보 수정
 9. 패스워드 변경
+
+<br>
 
 ## 📝기능 상세설명
 | **기능** | **상세설명** |
