@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Update Profile{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="signup-container text-center">
+        <h1 class="fst-italic fw-bold">Change Profile</h1>
+        <br>
+        <!-- Without the enctype="multipart/form-data" attribute in the form, the file data won't be sent at all -->
+        <form method="post" enctype="multipart/form-data" class="signup-form">
+            {% csrf_token %}
+            <div class="form-group row">
+              {{ form.profile_image|add_label_class:"col-form-label col-sm-3 ms-2 fw-bold"}}
+              <div class="col mb-2">
+                  {{ form.profile_image|add_class:"form-control"}}
+              </div>
+            </div>
+            <hr>
+            <div class="form-group row">
+              {{ form.description|add_label_class:"col-form-label col-sm-3 ms-2 fw-bold"}}
+              <div class="col mb-2">
+                  {{ form.description|add_class:"form-control" }}
+              </div>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg btn-block mt-3">Change Profile</button>
+            </div>
+        </form>
+        {% if form.errors %}
+        <div class="alert alert-danger mt-3">
+            <div class="fw-bold">Wrong! Please correct the error(s) below.</div>
+            {{ form.errors }}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

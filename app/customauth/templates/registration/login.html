@@ -1,0 +1,51 @@
+{% extends 'account_base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="login-container text-center">
+        <!-- Instagram Logo -->
+        <h1 class="fst-italic fw-bold">움짤 저장소</h1>
+        <br>
+        <!-- Login Form -->
+        <form method="post" class="d-grid gap-2">
+            {% csrf_token %}
+            <div class="col">
+                <!-- autofocus 커서를 자동으로 위치시킴 -->
+                {{ form.username|add_class:"form-control"|attr:"autofocus"|attr:"placeholder:사용자 이메일"}}
+            </div>
+            <div class="col mt-1">
+                <!-- autofocus 커서를 자동으로 위치시킴 -->
+                {{ form.password|add_class:"form-control"|attr:"autofocus"|attr:"placeholder:비밀번호"}}
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block mt-3">Log In</button>
+        </form>
+        {% if form.errors %}
+        <div class="alert alert-danger mt-3">
+            <div class="fw-bold">Wrong! Please correct the error(s) below.</div>
+            {{ form.errors }}
+        </div>
+        {% endif %}
+        <!-- OR Divider -->
+        <div class="or-divider">
+            <hr>
+            <span>OR</span>
+            <hr>
+        </div>
+
+        <!-- Forgot Password -->
+        <div class="my-3">
+            <a href="{% url 'customauth:reset_password' %}" class="text-secondary">Forgot password?</a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<div class="signup-container text-center mt-3 py-3">
+    <p class="login-footer">Don't have an account? <a href="{% url 'customauth:register' %}">Sign up</a></p>
+</div>
+{% endblock %}

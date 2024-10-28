@@ -1,0 +1,21 @@
+{% extends 'account_base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Logout Done{% endblock %}
+
+{% block content %}
+<div class="signup-container text-center">
+    <!-- Instagram Logo -->
+    <h1 class="fst-italic fw-bold">움짤 저장소</h1><br>
+    <br>           
+    <!-- Sign Up Form -->
+    <i class="fa-solid fa-quote-left"></i><span class="fw-bold">&ensp;You've logged out. Looking forward to seeing you again!👋&ensp;</span><i class="fa-solid fa-quote-right"></i>
+    <br>
+</div>
+{% endblock %}
+
+{% block footer %}
+<div class="signup-container text-center mt-3 py-3">
+    <p class="signup-footer">Have an account? <a href="{% url 'customauth:login' %}">Log in</a></p>
+</div>
+{% endblock %}

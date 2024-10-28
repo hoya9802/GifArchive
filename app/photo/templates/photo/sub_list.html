@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Subscriptions{% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <div class="row">
+    {% for object in object_list %}
+        <div class="col-4 mx-auto">
+            <div class="thumbnail">
+                <a class="h5" style="color:aliceblue" href="{{ object.get_absolute_url }}">
+                    <img src="{{ object.gif_image.thumb_url }}" alt="{{ object.name }}" width="100px"><br>
+                    <p class="text-center">&ensp;{{ object.name }}</p>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

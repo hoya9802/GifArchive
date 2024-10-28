@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Login{% endblock %}</title>
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0c0c0c;
+        }
+        .login-container {
+            max-width: 350px;
+            margin: 80px auto;
+            padding: 40px 20px;
+            background-color: #0c0c0c;
+            border: 1px solid #d8d8d8;
+            border-radius: 8px;
+            color: hsl(0, 0%, 100%);
+        }
+        .signup-container {
+            max-width: 350px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            background-color: #0c0c0c;
+            border: 1px solid #d8d8d8;
+            border-radius: 8px;
+            color: hsl(0, 0%, 100%);
+        }
+        .login-logo {
+            margin-bottom: 20px;
+        }
+        .or-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .or-divider hr {
+            flex: 1;
+            height: 1px;
+            border: 0;
+            background-color: #dbdbdb;
+        }
+        .or-divider span {
+            margin: 0 10px;
+            color: #8e8e8e;
+            font-weight: 500;
+        }
+        .login-footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .login-footer a {
+            color: #3897f0;
+            text-decoration: none;
+        }
+        .form-control {
+            font-size: 14px;
+        }
+        .signup-logo {
+            margin-bottom: 20px;
+        }
+        .signup-form input {
+            margin-bottom: 10px;
+        }
+        .signup-footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .signup-footer a {
+            color: #3897f0;
+            text-decoration: none;
+        }
+        .form-control {
+            font-size: 14px;
+        }
+        .or-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .or-divider hr {
+            flex: 1;
+            height: 1px;
+            border: 0;
+            background-color: #dbdbdb;
+        }
+        .or-divider span {
+            margin: 0 10px;
+            color: #8e8e8e;
+            font-weight: 500;
+        }
+    </style>
+    {% block extra-style %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        {% block content %}{% endblock %}
+
+        <!-- Sign Up Section -->
+        {% block footer %}{% endblock %}
+    </div>
+
+    <!-- Bootstrap 5.3 JS (Optional) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/b572e80bf8.js" crossorigin="anonymous"></script>
+</body>
+</html>

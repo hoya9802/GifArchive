@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-2">
+        {% if object.profile_image == "static/image/default_profile.png" %}
+            <img src="{% static 'image/default_profile.png' %}" alt="default image" style="width: 100%;">
+        {% else %}
+            <img src="{{object.profile_image.thumb_url}}" alt="profile image" style="width: 100%;">
+        {% endif %}
+    </div>
+    <ul class="col-md-10">
+        <h1>{{object.user_id.nick_name}}'s Archive</h1>
+        <p>가입일: {{object.user_id.create_dt}} · 구독자 {{sub}}명 </p>
+        <p class="mb-4">{{ object.description }}</p>
+
+        {% if user.nick_name != object.user_id.nick_name %}
+            {% if sub_check%}
+            <form method="post">{% csrf_token %}
+                <button class="btn btn-primary" type="submit">구독중</button>
+            </form>
+            {% else %}
+            <form method="post">{% csrf_token %}
+                <button class="btn btn-primary" type="submit">구독</button>
+            </form>
+            {% endif %}
+        {% else %}
+            <a class="btn btn-primary me-1" href="{% url 'customauth:update_profile' user.nick_name %}" role="button">프로필 수정</a>
+            <a class="btn btn-primary" href="{% url 'photo:management' %}" role="button">영상 관리</a>
+        {% endif %}
+    </ul>
+</div>
+<hr class="mt-4"></hr>
+<h6>전체 움짤 {{ gif_list.count }}개</h6>
+<div class="container text-center">
+    <div class="row">
+    {% for gif in gif_list %}
+        <div class="col-2 mx-2">
+            <div class="thumbnail">
+                <a class="h5" style="color:aliceblue" href="{{ gif.get_absolute_url }}">
+                    <img src="{{ gif.gif_image.thumb_url }}" alt="{{ gif.name }}" width="100px"><br>
+                    <p class="text-center">
+                        {{ gif.name }}
+                    </p>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

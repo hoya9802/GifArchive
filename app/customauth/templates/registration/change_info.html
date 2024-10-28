@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Change Account{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="signup-container text-center">
+      <!-- Instagram Logo -->
+      <h1 class="fst-italic fw-bold">Change Account</h1>
+      <br>           
+      <!-- Sign Up Form -->
+      <form method="post" class="signup-form">
+          {% csrf_token %}
+          <div class="form-group row">
+            {{ form.email|add_label_class:"col-form-label col-sm-3 ms-2 fw-bold"}}
+            <div class="col mb-2">
+                {{ form.email|add_class:"form-control"|attr:"autofocus"|attr:"placeholder:Email" }}
+            </div>
+          </div>
+          <div class="form-group row">
+            {{ form.nick_name|add_label_class:"col-form-label col-sm-3 ms-2 fw-bold"}}
+            <div class="col mb-2">
+                {{ form.nick_name|add_class:"form-control"|attr:"placeholder:Nickname" }}
+            </div>
+          </div>
+          <div class="form-group row">
+            {{ form.date_of_birth|add_label_class:"col-form-label col-sm-3 ms-2 fw-bold"}}
+            <div class="col mb-2">
+                {{ form.date_of_birth|add_class:"form-control"|attr:"placeholder:YYYY-MM-DD" }}
+            </div>
+          </div>
+          <div class="form-group row">
+            {{ form.gender|add_label_class:"col-form-label col-sm-3 ms-2 fw-bold"}}
+            <div class="col mb-2">
+                {{ form.gender|add_class:"form-control" }}
+            </div>
+          </div>
+          <div class="d-grid gap-2">
+            <a type="button" href="{% url 'customauth:password_change' %}" class="btn btn-primary btn-lg btn-block mt-3">Change Password</a>
+          </div>
+          <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-danger btn-lg btn-block mt-3">Change Account</button>
+          </div>
+      </form>
+      {% if form.errors %}
+      <div class="alert alert-danger mt-3">
+          <div class="fw-bold">Wrong! Please correct the error(s) below.</div>
+          {{ form.errors }}
+      </div>
+      {% endif %}
+  </div>
+</div>
+{% endblock %}

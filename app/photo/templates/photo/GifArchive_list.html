@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Photo Archive{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        {% for object in object_list %}
+            <div class="col-2 mx-2 my-2 text-center">
+                <div class="thumbnail">
+                    <a class="h5" style="color:aliceblue" href="{{ object.get_absolute_url }}">
+                        <img src="{{ object.gif_image.thumb_url }}" alt="{{ object.name }}" width="100px"><br>
+                        <p>{{ object.name }}</p>
+                    </a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

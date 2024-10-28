@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}liked GIF{% endblock %}
+
+{% block content %}
+<div class="container text-left">
+    <div class="row">
+        좋아요 누른 짤 {{ object_list.count }}개
+        <hr>
+        {% for object in object_list %}
+        <div class="thumb">
+            <a class="h5" style="color:aliceblue" href="{{ object.gif.get_absolute_url }}">
+            <img src="{{ object.gif.gif_image.thumb_url }}" alt="{{ object.gif.name }}"/> - {{ object.gif.name }}
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

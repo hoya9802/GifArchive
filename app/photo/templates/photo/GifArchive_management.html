@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Gif Management{% endblock %}
+
+{% block content %}
+<div class="container text-left">
+    <div class="row">
+        내 Gif {{ object_list.count }}개
+        <hr>
+        {% for object in object_list %}
+        <div class="thumb my-3">
+            <a class="h5" style="color:aliceblue" href="{{ object.get_absolute_url }}">
+                <img src="{{ object.gif_image.thumb_url }}" alt="{{ object.name }}"/>&ensp;<span style="color:red">-</span>&ensp;{{ object.name }}&ensp;·
+                좋아요 <span style="color:chartreuse">{{ object.like_count }}</span>개&ensp;·&ensp;{{ object.category }}
+            </a>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a class="btn btn-primary" type="button" href="{% url 'photo:photo_update' object.id %}">Update</a>
+                <!-- Make delete button modal unique -->
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ object.id }}">Delete</button>
+            </div>
+        </div>
+
+        <!-- Modal (make it unique by appending object.id) -->
+        <div class="modal fade" id="deleteModal{{ object.id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ object.id }}" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel{{ object.id }}" style="color:black">Confirm Delete</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p style="color:gray">Are you sure you want to delete <span class="fw-bold" style="color:red">{{ object.name }}</span>?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <form action="{% url 'photo:photo_delete' object.id %}" method="post" class="d-inline">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="mt-2">
+        {% endfor %}
+        {% if not object_list %}
+        <h3 class="text-center">업로드한 Gif가 없습니다...</h3>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

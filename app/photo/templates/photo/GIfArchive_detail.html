@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}GifArchive Detail{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-7">
+        <a href="{{object.gif_image.url}}">
+            <img src="{{object.gif_image.url}}" style="width: 100%;">
+        </a>
+    </div>
+
+    <ul class="col-md-5 mt-2">
+        <p>
+            <h1>{{ object.name }}</h1>
+        </p>
+        <li class="h5">Gif uploader</li>
+            <p>
+                <a href="{% url 'customauth:my_profile' object.owner.nick_name %}">
+                    <h3>{{object.owner.nick_name}}</h3>
+                </a>
+            </p>
+        <li class="h5">Date Uploaded</li>
+            {% if df == 0 %}
+                <p>오늘 업로드</p>
+            {% else %}
+                <p class="fst-italic">{{ df }}일 전</p>
+            {% endif %}
+        
+        <form method="post">{% csrf_token %}
+            <button class="btn btn-primary" type="submit"><i class="fa-solid fa-thumbs-up"></i>&ensp;{{like}}</button>
+        </form>
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: chartreuse;">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        <br>
+        <li class="h5">Category</li>
+            <p>{{ object.category }}</p>
+    </ul>
+    <br>
+    <div id="disqus_thread"></div>
+</div>
+{% endblock %}
+
+<!-- Add DIDQUS -->
+{% block extra-script %}
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+
+    var disqus_config = function () {
+        this.page.url = '{{ disqus_url }}';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = '{{disqus_id}}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.title = '{{ disqus_title}}';
+    };
+
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = 'https://{{ disqus_short }}.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" 
+    rel="nofollow">comments powered by Disqus.</a></noscript>
+{% endblock %}

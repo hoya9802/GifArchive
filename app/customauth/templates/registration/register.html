@@ -1,0 +1,51 @@
+{% extends 'account_base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="signup-container text-center">
+        <!-- Instagram Logo -->
+        <h1 class="fst-italic fw-bold">움짤 저장소</h1>
+        <br>           
+        <!-- Sign Up Form -->
+        <form method="post" class="signup-form">
+            {% csrf_token %}
+            <div class="col">
+                {{ form.email|add_class:"form-control"|attr:"autofocus"|attr:"placeholder:Email" }}
+            </div>
+            <div class="col">
+                {{ form.password1|add_class:"form-control"|attr:"placeholder:Password" }}
+            </div>
+            <div class="col">
+                {{ form.password2|add_class:"form-control"|attr:"placeholder:Password again" }}
+            </div>
+            <div class="col">
+                {{ form.nick_name|add_class:"form-control"|attr:"placeholder:Nickname" }}
+            </div>
+            <div class="col">
+                {{ form.date_of_birth|add_class:"form-control"|attr:"placeholder:YYYY-MM-DD" }}
+            </div>
+            <div class="col">
+                {{ form.gender|add_class:"form-control" }}
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg btn-block mt-3">Sign Up</button>
+            </div>
+        </form>
+        {% if form.errors %}
+        <div class="alert alert-danger mt-3">
+            <div class="fw-bold">Wrong! Please correct the error(s) below.</div>
+            {{ form.errors }}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<div class="signup-container text-center mt-3 py-3">
+    <p class="signup-footer">Have an account? <a href="{% url 'customauth:login' %}">Log in</a></p>
+</div>
+{% endblock %}
